@@ -24,13 +24,13 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
     <style>
-        .zero-raduis{
+        .zero-raduis {
             border-radius: 0px !important;
         }
 
         a {
             color: #92badd;
-            display:inline-block;
+            display: inline-block;
             text-decoration: none;
             font-weight: 400;
         }
@@ -40,10 +40,9 @@
             font-size: 16px;
             font-weight: 500;
             text-transform: uppercase;
-            display:inline-block;
+            display: inline-block;
             color: #56baed;
         }
-
 
 
         /* STRUCTURE */
@@ -67,17 +66,16 @@
             max-width: 450px;
             position: relative;
             padding: 0px;
-            -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
-            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.3);
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
             text-align: center;
         }
 
         #formFooter {
-            padding: 2px ;
+            padding: 2px;
             text-align: right;
             width: 90%;
         }
-
 
 
         /* TABS */
@@ -92,10 +90,9 @@
         }
 
 
-
         /* FORM TYPOGRAPHY*/
 
-        input[type=button], input[type=submit], input[type=reset]  {
+        input[type=button], input[type=submit], input[type=reset] {
             background-color: #2eca6a;
             border: none;
             color: white;
@@ -117,11 +114,11 @@
             transition: all 0.3s ease-in-out;
         }
 
-        input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+        input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
             background-color: mediumseagreen;
         }
 
-        input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+        input[type=button]:active, input[type=submit]:active, input[type=reset]:active {
             -moz-transform: scale(0.95);
             -webkit-transform: scale(0.95);
             -o-transform: scale(0.95);
@@ -149,7 +146,6 @@
             -webkit-border-radius: 5px 5px 5px 5px;
             border-radius: 5px 5px 5px 5px;
         }
-
 
 
         /* ANIMATIONS */
@@ -191,23 +187,46 @@
         }
 
         /* Simple CSS3 Fade-in Animation */
-        @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-        @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-        @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @-moz-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
         .fadeIn {
-            opacity:0;
-            -webkit-animation:fadeIn ease-in 1;
-            -moz-animation:fadeIn ease-in 1;
-            animation:fadeIn ease-in 1;
+            opacity: 0;
+            -webkit-animation: fadeIn ease-in 1;
+            -moz-animation: fadeIn ease-in 1;
+            animation: fadeIn ease-in 1;
 
-            -webkit-animation-fill-mode:forwards;
-            -moz-animation-fill-mode:forwards;
-            animation-fill-mode:forwards;
+            -webkit-animation-fill-mode: forwards;
+            -moz-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
 
-            -webkit-animation-duration:1s;
-            -moz-animation-duration:1s;
-            animation-duration:1s;
+            -webkit-animation-duration: 1s;
+            -moz-animation-duration: 1s;
+            animation-duration: 1s;
         }
 
         .fadeIn.first {
@@ -248,20 +267,18 @@
             color: #0d0d0d;
         }
 
-        .underlineHover:hover:after{
+        .underlineHover:hover:after {
             width: 100%;
         }
 
     </style>
 </head>
 <body>
-<header th:replace="~{/template::header}">
-</header>
 <div id="preloader"></div>
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
         class="bi bi-arrow-up-short"></i></a>
 
-<div class="wrapper fadeInDown zero-raduis"  style="background-image: url(assets/img/bg_2.webp); height: 100%">
+<div class="wrapper fadeInDown zero-raduis" style="background-image: url(assets/img/bg_2.webp); height: 100%">
     <div id="formContent">
         <!-- Tabs Titles -->
 
@@ -272,25 +289,18 @@
         </div>
 
         <!-- Login Form -->
-        <form>
-            <input type="email" id="email" class="fadeIn second zero-raduis" name="email" placeholder="Tài khoản">
-            <input type="text" id="password" class="fadeIn third zero-raduis" name="login" placeholder="Mật khẩu">
+        <form th:action="@{/login}" method="post" id="form-login">
+            <input type="text" id="email" class="fadeIn second zero-raduis" name="username" placeholder="Tài khoản">
+            <input type="text" id="password" class="fadeIn third zero-raduis" name="password" placeholder="Mật khẩu">
             <div id="formFooter">
                 <a class="underlineHover text-dark" href="#">Quên mật khẩu?</a>
             </div>
             <input type="submit" class="fadeIn fourth zero-raduis" value="login">
             <input type="button" class="fadeIn fourth zero-raduis pc" value="Đăng ký tài khoản">
         </form>
-
-
     </div>
 </div>
 
-<!-- Template Main JS File -->
-<section th:replace="~{/template::section}">
-</section>
-<footer th:replace="~{/template::footer}">
-</footer>
 <!-- Vendor JS Files -->
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
