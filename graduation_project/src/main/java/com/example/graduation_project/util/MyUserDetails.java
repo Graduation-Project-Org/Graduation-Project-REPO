@@ -1,7 +1,7 @@
 package com.example.graduation_project.util;
 
-import com.example.graduation_project.entities.AccountEntity;
-import com.example.graduation_project.entities.RoleEntity;
+import com.example.graduation_project.entities.admin.AccountEntity;
+import com.example.graduation_project.entities.admin.RoleEntity;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

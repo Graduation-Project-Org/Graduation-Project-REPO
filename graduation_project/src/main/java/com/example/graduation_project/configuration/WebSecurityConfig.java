@@ -1,6 +1,6 @@
 package com.example.graduation_project.configuration;
 
-import com.example.graduation_project.serviceimpl.UserDetailsServiceImpl;
+import com.example.graduation_project.serviceimpl.admin.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

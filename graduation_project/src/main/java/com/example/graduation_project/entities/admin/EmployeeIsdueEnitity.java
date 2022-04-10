@@ -1,6 +1,7 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.admin;
 
-import com.fasterxml.jackson.core.SerializableString;
+import com.example.graduation_project.entities.admin.IssueEntity;
+import com.example.graduation_project.entities.employee.EmployeeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

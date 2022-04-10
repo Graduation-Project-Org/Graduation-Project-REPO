@@ -1,4 +1,5 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.admin;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,23 +7,19 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="category")
-public class CategoryEntity implements Serializable {
+@Table(name = "role")
+public class RoleEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryId;
+    @Column(name = "role_id")
+    private Long roleId;
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "newsId")
-    private NewsEntity newsEntity;
 }

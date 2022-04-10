@@ -1,4 +1,4 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.admin;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +30,7 @@ public class IssueEntity implements Serializable {
     private Date dateEnd;
 
     @OneToMany(mappedBy = "issueEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<EmployeeIsdueEnitity> employeeIsdueEnitityList;
+    private List< EmployeeIsdueEnitity > employeeIsdueEnitityList;
 
 
 

@@ -1,5 +1,6 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.news;
 
+import com.example.graduation_project.entities.news.NewsEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

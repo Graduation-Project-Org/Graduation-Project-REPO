@@ -1,5 +1,8 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.employee;
 
+import com.example.graduation_project.entities.news.NewsEntity;
+import com.example.graduation_project.entities.admin.AccountEntity;
+import com.example.graduation_project.entities.admin.EmployeeIsdueEnitity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -56,22 +59,22 @@ public class EmployeeEntity implements Serializable {
             mappedBy = "employeeEntity",
             fetch = FetchType.LAZY)
 
-    private List<EmployeeIsdueEnitity> employeeIsdueEnitityList;
+    private List< EmployeeIsdueEnitity > employeeIsdueEnitityList;
 
 
 
     @ManyToOne
     @JoinColumn(name = "positionId")
-    private  PositionEntity positionEntities;
+    private PositionEntity positionEntities;
 
     @ManyToOne
     @JoinColumn(name = "departmentId")
-    private  DepartmentEntity departmentEntity;
+    private DepartmentEntity departmentEntity;
 
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "employeeEntity",
             fetch = FetchType.LAZY)
 
-    private  List<NewsEntity> newsEntityList;
+    private  List< NewsEntity > newsEntityList;
 }

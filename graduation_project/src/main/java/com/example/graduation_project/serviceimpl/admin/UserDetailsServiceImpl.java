@@ -1,8 +1,7 @@
-package com.example.graduation_project.serviceimpl;
+package com.example.graduation_project.serviceimpl.admin;
 
-
-import com.example.graduation_project.entities.AccountEntity;
-import com.example.graduation_project.repositories.AccountRepository;
+import com.example.graduation_project.entities.admin.AccountEntity;
+import com.example.graduation_project.repositories.admin.AccountRepository;
 import com.example.graduation_project.util.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
     @Autowired
     private AccountRepository userRepository;
 

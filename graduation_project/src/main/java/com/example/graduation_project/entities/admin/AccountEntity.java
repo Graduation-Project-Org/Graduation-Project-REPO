@@ -1,5 +1,7 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.admin;
 
+import com.example.graduation_project.entities.customer.CustomerEntity;
+import com.example.graduation_project.entities.employee.EmployeeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,13 +42,13 @@ public class AccountEntity  implements Serializable {
             joinColumns = @JoinColumn(name = "users_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id")
     )
-    private Set<RoleEntity> roles;
+    private Set< RoleEntity > roles;
 
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "accounts")
-    private List<CustomerEntity> customerEntityList;
+    private List< CustomerEntity > customerEntityList;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "accounts")
-    private List<EmployeeEntity> employeeEntityList;
+    private List< EmployeeEntity > employeeEntityList;
 
 }

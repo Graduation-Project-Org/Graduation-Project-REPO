@@ -1,5 +1,7 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.news;
 
+import com.example.graduation_project.entities.customer.CustomerEntity;
+import com.example.graduation_project.entities.employee.EmployeeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,19 +38,19 @@ public class NewsEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "employeeId")
-    private  EmployeeEntity employeeEntity;
+    private EmployeeEntity employeeEntity;
 
     @ManyToOne
     @JoinColumn(name = "customerId")
-    private  CustomerEntity customerEntity;
+    private CustomerEntity customerEntity;
 
+    @ManyToOne(targetEntity = CategoryEntity.class)
+    private CategoryEntity categoryEntity;
 
-    @OneToMany(mappedBy = "newsEntity",fetch =FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<CategoryEntity> categoryEntityList;
-
-     @OneToMany(mappedBy ="newsEntity" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<DirectionEntity>  directionEntityList;
+    @ManyToOne(targetEntity = DirectionEntity.class)
+    private DirectionEntity  directionEntity;
 
      @OneToMany(mappedBy = "newsEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private  List<ImageOfNewsEntity> imageOfNewsEntityList;
+     @Column(name = "images")
+    private  List< ImageOfNewsEntity > imageOfNewsEntityList;
 }

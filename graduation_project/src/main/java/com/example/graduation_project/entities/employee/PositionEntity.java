@@ -1,5 +1,6 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.employee;
 
+import com.example.graduation_project.entities.employee.EmployeeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +24,7 @@ public class PositionEntity implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "positionEntities",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<EmployeeEntity> employeeEntityList;
+    private List< EmployeeEntity > employeeEntityList;
 
 
 

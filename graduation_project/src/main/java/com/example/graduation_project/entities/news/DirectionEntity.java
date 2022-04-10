@@ -1,4 +1,4 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.news;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Data
@@ -21,7 +22,6 @@ public class DirectionEntity implements Serializable {
 
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "newsId")
-    private NewsEntity newsEntity;
+    @OneToMany (mappedBy = "directionEntity")
+    private List< NewsEntity > newsEntity;
 }

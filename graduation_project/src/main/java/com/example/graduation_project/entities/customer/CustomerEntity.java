@@ -1,5 +1,8 @@
-package com.example.graduation_project.entities;
+package com.example.graduation_project.entities.customer;
 
+import com.example.graduation_project.entities.employee.EmployeeEntity;
+import com.example.graduation_project.entities.news.NewsEntity;
+import com.example.graduation_project.entities.admin.AccountEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +21,7 @@ import java.util.List;
 public class CustomerEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="customter_id")
+    @Column(name ="customer_id")
     private  Long customerId;
 
     @Column(name ="first_name",length = 30)
@@ -45,11 +48,11 @@ public class CustomerEntity implements Serializable {
     private AccountEntity accounts;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "accounts")
-    private List<EmployeeEntity> employeeEntityList;
+    private List< EmployeeEntity > employeeEntityList;
 
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "customerEntity")
-    private List<NewsEntity> newsEntityList;
+    private List< NewsEntity > newsEntityList;
 
 
 
