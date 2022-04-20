@@ -49,7 +49,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/js/**","/ckeditor/**","/css/**", "/image/**","/resources/**").permitAll()
+                .antMatchers("/js/**","/ckeditor/**","/css/**","/vendor/**","/img/**","/",
+                        "/resources/static/**",  "/**/*.js", "/**/*.css", "/**/*.jpg", "/**/*.png").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("admin")
                 .anyRequest().authenticated()
                 .and()

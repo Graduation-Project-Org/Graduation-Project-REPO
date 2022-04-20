@@ -21,5 +21,7 @@ public class RoleEntity implements Serializable {
     private Long roleId;
 
     private String name;
+    private String url;
+    private String code;
 
 }

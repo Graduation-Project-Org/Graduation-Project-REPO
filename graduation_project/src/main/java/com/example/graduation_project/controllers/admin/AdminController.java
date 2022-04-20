@@ -6,12 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("admin")
 public class AdminController {
 
     @GetMapping(value = {"","/"})
     public String homePage(ModelMap model){
-        return  "/admin/home";
+        return  "/home";
+
+    }
+    @GetMapping(value = {"/list"})
+    public String AdminTemplate(ModelMap model){
+        return  "/admin/admin";
 
     }
 

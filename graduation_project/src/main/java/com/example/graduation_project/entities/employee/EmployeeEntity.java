@@ -2,7 +2,7 @@ package com.example.graduation_project.entities.employee;
 
 import com.example.graduation_project.entities.news.NewsEntity;
 import com.example.graduation_project.entities.admin.AccountEntity;
-import com.example.graduation_project.entities.admin.EmployeeIsdueEnitity;
+import com.example.graduation_project.entities.admin.EmployeeIssueEnitity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,47 +21,40 @@ public class EmployeeEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="employee_id")
-    private  Long employeeId;
+    @Column(name = "employee_id")
+    private Long employeeId;
 
-    @Column(name ="first_name",length = 30)
-    private  String firstName;
+    @Column(name = "first_name", length = 30)
+    private String firstName;
 
-    @Column(name ="last_name",length = 30)
-    private  String lastName;
+    @Column(name = "last_name", length = 30)
+    private String lastName;
 
-    private Date dob;
+    private Date dateOfBirth;
 
-    private  String address;
+    private String address;
 
-    private  int gender;
+    private int gender;
 
-    private  String sdt;
+    private String phoneNumber;
 
-    @Column(name ="card_id",length = 13)
-    private  String cardId;
+    @Column(name = "card_id", length = 13)
+    private String idCard;
 
-    private  String image;
+    private String image;
 
-    private  double salary;
+    private double salary;
 
-    private  String atm;
+    private String accountNumber;
 
-    @Column(name ="personal_income_tax_code",length = 50)
-    private  String personalIncomeTaxCode;
+    @Column(name = "personal_income_tax_code", length = 50)
+    private String personalIncomeTaxCode;
 
-    @ManyToOne
-    @JoinColumn(name = "id")
+    @OneToOne(targetEntity = AccountEntity.class, cascade = CascadeType.ALL)
     private AccountEntity accounts;
 
-
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "employeeEntity",
-            fetch = FetchType.LAZY)
-
-    private List< EmployeeIsdueEnitity > employeeIsdueEnitityList;
-
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeEntity", fetch = FetchType.LAZY)
+    private List< EmployeeIssueEnitity > employeeIssueEntityList;
 
     @ManyToOne
     @JoinColumn(name = "positionId")
@@ -70,11 +63,4 @@ public class EmployeeEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "departmentId")
     private DepartmentEntity departmentEntity;
-
-
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "employeeEntity",
-            fetch = FetchType.LAZY)
-
-    private  List< NewsEntity > newsEntityList;
 }

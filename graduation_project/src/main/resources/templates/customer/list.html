@@ -1,10 +1,152 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/managementLayout.html}">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Danh sách khách hàng</title>
+
 </head>
 <body>
+<section  class="col-md-10 bg-light" layout:fragment="content">
+    <!--            <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"-->
+    <!--               class="border rounded-3 p-1 text-decoration-none"><i class="bi bi-list bi-lg py-2 p-1"></i> Menu</a>-->
+    <div class="col-md-12 col-lg-12 ">
+        <h3 style="text-align: center">DANH SÁCH KHÁCH HÀNG</h3>
+        <form class="col-md-12" action="" method="GET">
+            <div class=" row">
+                <div class=" col-md-3 fw-bold">
+                    <div class="float-center">
+                        <input type="text" id="name" name="name" th:value="${name}"
+                               class="form-control" placeholder="Tên" aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+                <div class=" col-md-4 fw-bold">
+                    <div class="float-center">
+                        <input type="text" id="phone" th:name="phone" th:value="${phone}"
+                               class="form-control" placeholder="Điện thoại"
+                               aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+                <div class="col-md-3 fw-bold">
+                    <div class="float-center">
+                        <input type="text" id="address" name="address" th:value="${address}"
+                               class="form-control" placeholder="Điện thoại"
+                               aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="float-end">
+                        <button type="submit" class="btn btn-success text-white">
+                            Tìm kiếm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class=" mt-4">
+            <div>
+                <table class="table table-striped   ">
+                    <thead class="">
 
+                    <tr class="bg-dark text-center text-light fw-bold">
+                        <th>STT</th>
+                        <th>Họ tên</th>
+                        <th>Ngày sinh</th>
+                        <th>SĐT</th>
+                        <th>Địa chỉ</th>
+                        <th>Giới tính</th>
+                        <th>CMND</th>
+                        <th colspan="2">Chỉnh sửa/Xóa</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="customer : ${customerEntityPage.content}">
+                    <tr>
+                        <td th:text="${customer.customerId}"></td>
+                        <td>
+                            <span th:text="${customer.lastName}"></span>
+                            <span th:text="${customer.firstName}"></span>
+                        </td>
+                        <!--                                    th:text="${#dates.format(sprint.releaseDate, 'dd-MMM-yyyy')}"-->
+                        <td th:text="${#dates.format(customer.dateOfBirth, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${customer.phoneNumber}"></td>
+                        <td th:text="${customer.address}"></td>
+                        <td>
+                            <span th:if="${customer.gender}==1">Nam</span>
+                            <span th:if="${customer.gender}==0">Nữ</span>
+                        </td>
+                        <td th:text="${customer.idCard}"></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-warning text-white small-text">
+                                Sửa
+                            </button>
+                        </td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-danger small-text"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                Xóa
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Xoá Nhân
+                                                Viên</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn muốn xóa: Lê Quốc Tùng
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-secondary"
+                                                    data-bs-dismiss="modal">Đóng
+                                            </button>
+                                            <button type="button" class="btn btn-sm text-light bg-danger">
+                                                Xoá
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                    </tbody>
+                </table>
+            </div>
+            </table>
+        </div>
+        <div class="float-end">
+            <ul class="pagination pagination-sm justify-content-end " style="margin:20px 0">
+                <li class="page-item">
+                    <a class="btn btn-outline-primary btn-sm" role="button" th:if="${customerEntityPage.hasPrevious()}"
+                       th:href="@{/customer(page=${customerEntityPage.number -1})}">
+                        Previous
+                    </a>
+                </li>
+                <li class="page-item">
+                    <th:block th:each="pageNo: ${#numbers.sequence(1,customerEntityPage.totalPages)}">
+                        <!--    Vòng lặp hiển thị tất cả các trong hiện có-->
+                        <a class="btn btn-outline-primary btn-sm"  role="button" th:href="@{/customer(page = ${pageNo})}"
+                           th:text="${pageNo}"></a>
+                    </th:block>
+                </li>
+                <li class="page-item">
+                    <a class="btn btn-outline-primary btn-sm" role="button" th:if="${customerEntityPage.hasNext()}"
+                       th:href="@{/customer(page=${customerEntityPage.number +1 })}">
+                        Next
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
 </body>
 </html>

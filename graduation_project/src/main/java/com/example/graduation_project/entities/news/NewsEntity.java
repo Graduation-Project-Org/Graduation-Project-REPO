@@ -29,28 +29,25 @@ public class NewsEntity implements Serializable {
 
     private String description;
 
-    private  double area;
+    private Double price;
+
+    private double area;
 
     @Column(name = "date_of_news")
     private Date dateOfNews;
 
-    private  int agree;
+    private int status;
 
-    @ManyToOne
-    @JoinColumn(name = "employeeId")
-    private EmployeeEntity employeeEntity;
-
-    @ManyToOne
-    @JoinColumn(name = "customerId")
+    @ManyToOne(targetEntity = CustomerEntity.class)
     private CustomerEntity customerEntity;
 
     @ManyToOne(targetEntity = CategoryEntity.class)
     private CategoryEntity categoryEntity;
 
     @ManyToOne(targetEntity = DirectionEntity.class)
-    private DirectionEntity  directionEntity;
+    private DirectionEntity directionEntity;
 
-     @OneToMany(mappedBy = "newsEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-     @Column(name = "images")
-    private  List< ImageOfNewsEntity > imageOfNewsEntityList;
+    @OneToMany(mappedBy = "newsEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Column(name = "images")
+    private List<ImageOfNewsEntity > imageOfNewsEntityList;
 }

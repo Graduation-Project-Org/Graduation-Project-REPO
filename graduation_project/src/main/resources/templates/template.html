@@ -10,20 +10,20 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link th:href="@{/assets/img/favicon.png}" rel="icon">
+    <link th:href="@{/assets/img/apple-touch-icon.png}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link th:href="@{/assets/vendor/animate.css/animate.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet"type="text/css">
+    <link th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet"type="text/css">
+    <link th:href="@{/assets/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet"type="text/css">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" type="text/css">
 
     <!-- =======================================================
     * Template Name: EstateAgency - v4.7.0
@@ -75,7 +75,6 @@
                 </div>
             </li>
             </ul>
-
         </div>
     </nav><!-- End Header/Navbar -->
 </header>
@@ -84,7 +83,7 @@
 
     <div class="swiper-wrapper">
 
-        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-1.jpg)">
+        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(static/assets/img/slide-1.jpg)">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
                 <div class="table-cell">
@@ -109,7 +108,7 @@
                 </div>
             </div>
         </div>
-        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-2.jpg)">
+        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(static/assets/img/slide-2.jpg)">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
                 <div class="table-cell">
@@ -134,7 +133,7 @@
                 </div>
             </div>
         </div>
-        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-3.jpg)">
+        <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(static/assets/img/slide-3.jpg)">
             <div class="overlay overlay-a"></div>
             <div class="intro-content display-table">
                 <div class="table-cell">
@@ -166,7 +165,7 @@
 <main>
     <div class="container-fluid">
         <div class="row">
-            <aside class="col-md-2 bg-light">
+            <aside th:fragment="aside" class="col-md-2 bg-light">
                 <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
                     <div class="position-sticky ">
                         <div class="list-group list-group-flush  mt-4">
@@ -374,11 +373,11 @@
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
+<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/assets/vendor/swiper/swiper-bundle.min.js}"></script>
+<script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
 
 <!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
+<script th:src="@{/assets/js/main.js}"></script>
 </body>
 </html>

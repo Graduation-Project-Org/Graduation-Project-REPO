@@ -6,6 +6,7 @@ import com.example.graduation_project.entities.admin.AccountEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,27 +30,22 @@ public class CustomerEntity implements Serializable {
 
     @Column(name ="last_name",length = 30)
     private  String lastName;
-
-    private Date dob;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dateOfBirth;
 
     private  String address;
 
     private  int gender;
 
-    private  String sdt;
+    private  String phoneNumber;
 
     @Column(name ="card_id",length = 13)
-    private  String cardId;
+    private  String idCard;
 
     private  String image;
 
-    @ManyToOne
-    @JoinColumn(name = "id")
+    @OneToOne(targetEntity = AccountEntity.class, cascade = CascadeType.ALL)
     private AccountEntity accounts;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "accounts")
-    private List< EmployeeEntity > employeeEntityList;
-
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "customerEntity")
     private List< NewsEntity > newsEntityList;

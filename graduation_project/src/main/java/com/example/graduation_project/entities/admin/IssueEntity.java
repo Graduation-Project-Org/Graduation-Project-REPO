@@ -30,7 +30,7 @@ public class IssueEntity implements Serializable {
     private Date dateEnd;
 
     @OneToMany(mappedBy = "issueEntity",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List< EmployeeIsdueEnitity > employeeIsdueEnitityList;
+    private List< EmployeeIssueEnitity > employeeIssueEntityList;
 
 
 
