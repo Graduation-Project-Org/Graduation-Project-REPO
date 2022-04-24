@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>EstateAgency Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link th:href="@{/assets/img/favicon.png}" rel="icon">
+    <link th:href="@{/assets/img/apple-touch-icon.png}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/assets/vendor/animate.css/animate.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" type="text/css">
+
+    <!-- =======================================================
+    * Template Name: EstateAgency - v4.7.0
+    * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+<body>
+<main id="main">
+    <header th:replace="~{/fragments/header::header}"></header>
+    <!-- ======= Agent Single ======= -->
+    <section class="agent-single" style="margin-top: 5rem">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="">
+                        <span class="title-d fs-2 fw-bold">LỊCH SỬ BÀI ĐĂNG</span>
+                        <span class="title-d fs-2 fw-bold">(</span>
+                        <span class="title-d fs-2 fw-bold" th:text="${newsEntityPage.content.size()}"></span>
+                        <span class="title-d fs-2 fw-bold">)</span>
+                    </div>
+                </div>
+                <div class="row property-grid grid">
+                    <div class="col-sm-12">
+                        <div class="grid-option">
+                            <form action="" method="GET" class="">
+                                <div class="row pb-3">
+                                    <div class="text-center  page-title">
+                                        <div class="row mt-3">
+                                            <div class="col-md-3">
+                                                <input class="form-control  me-2" type="text" placeholder="Nhập địa chỉ"
+                                                       th:name="address" th:value="${address}">
+                                                <input  name="page" th:value="${0}" hidden>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input class="form-control  me-2" type="text" placeholder="Tiêu đề"
+                                                       th:name="tittle" th:value="${tittle}">
+                                            </div>
+                                            <div class="col">
+                                                <select th:name="category" class="form-select form-control" aria-label="Default select example">
+                                                    <option value=''>Loại BDS</option>
+                                                    <option th:value="${1}">Bán</option>
+                                                    <option th:value="${2}">Cho Thuê</option>
+                                                </select>
+                                            </div>
+                                            <div class="col">
+                                                <select th:name="status" class="form-select form-control" aria-label="Default select example">
+                                                    <option value=''>Tình trạng</option>
+                                                    <option th:value="${1}">Đã duyệt</option>
+                                                    <option th:value="${2}">Chưa duyệt</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-1 d-flex ">
+                                                <button class="btn btn-success  main-bg fw-bold w-100" type="submit">Tìm</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <th:block th:each="news : ${newsEntityPage.content}">
+                        <div class="col-md-4">
+                            <div class="card-box-a card-shadow">
+                                <div class="img-box-a">
+                                    <img th:src="@{{img}(img = ${news.imageOfNewsEntityList[0].name})}" width="100%"
+                                         height="350rem" alt="">
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="card-overlay-a-content">
+                                        <div class="card-header-a">
+                                            <h5 class="card-title-a">
+                                                <a href="#" th:text="${news.title}"></a>
+                                            </h5>
+                                        </div>
+                                        <div class="card-body-a">
+                                            <div class="price-box d-flex">
+                                                <span class="price-a tes" th:text="${news.categoryEntity.name}"></span>
+                                                |
+                                                <span class="price-a" th:text="${news.price}"></span>
+                                            </div>
+                                            <a th:href="@{/news/detail/__${news.newsId}__ }" class="link-a">Xem chi tiết
+                                                <span class="bi bi-chevron-right"></span>
+                                            </a>
+                                        </div>
+                                        <div class="card-footer-a">
+                                            <ul class="card-info d-flex justify-content-around">
+                                                <li>
+                                                    <h4 class="card-info-title">Diện tích</h4>
+                                                    <span th:text="${news.area}">m<sup>2</sup></span>
+                                                </li>
+                                                <li>
+                                                    <h4 class="card-info-title">Hướng</h4>
+                                                    <span th:text="${news.directionEntity.name}"></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="float-end">
+                            <ul class="pagination pagination-sm justify-content-end " style="margin:20px 0">
+                                <li class="page-item">
+                                    <a class="btn btn-outline-primary btn-sm" role="button"
+                                       th:if="${newsEntityPage.hasPrevious()}"
+                                       th:href="@{/news(page=${newsEntityPage.number -1})}">
+                                        Trang trước
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <th:block th:each="pageNo: ${#numbers.sequence(1,newsEntityPage.totalPages)}">
+                                        <!--    Vòng lặp hiển thị tất cả các trong hiện có-->
+                                        <a class="btn btn-outline-primary btn-sm" role="button"
+                                           th:href="@{/news(page = ${pageNo})}"
+                                           th:text="${pageNo}"></a>
+                                    </th:block>
+                                </li>
+                                <li class="page-item">
+                                    <a class="btn btn-outline-primary btn-sm" role="button"
+                                       th:if="${newsEntityPage.hasNext()}"
+                                       th:href="@{/news(page=${newsEntityPage.number +1 })}">
+                                        Trang sau
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section><!-- End Agent Single -->
+    <div th:replace="~{/fragments/footerBefore::section}"></div>
+    <footer th:replace="~{/fragments/footer::footer}"></footer>
+</main><!-- End #main -->
+<!-- Vendor JS Files -->
+<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/assets/vendor/swiper/swiper-bundle.min.js}"></script>
+<script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
+
+<!-- Template Main JS File -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

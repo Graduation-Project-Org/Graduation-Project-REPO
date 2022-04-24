@@ -17,5 +17,19 @@ public interface NewsService {
                                            @Param("minPrice")String minPrice,
                                            @Param("maxPrice")String maxPrice,
                                            Pageable pageable);
+
+    Page< NewsEntity > findAllHistoryListNewOfCustomer(@Param("customerId") String customerId,
+                                                       @Param("category") String category,
+                                                       @Param("direction") String direction,
+                                                       @Param("title") String title,
+                                                       @Param("status") String status,
+                                                       Pageable pageable);
+
+    Page< NewsEntity > findAllListNewByStatus(@Param("title") String title,
+                                              @Param("status") String status,
+                                              Pageable pageable);
+
+
     Optional<NewsEntity> findById(Long id);
+
 }

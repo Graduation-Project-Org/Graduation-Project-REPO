@@ -40,38 +40,14 @@
 <div class="click-closed"></div>
 <!--/ Form Search Star /-->
 <main id="main">
-
-    <!-- ======= Intro Single ======= -->
-    <section class="intro-single">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-8">
-                    <div class="title-single-box">
-                        <h1 class="title-single" th:text="${newsEntity.title}"></h1>
-                        <span class="color-text-a" th:text="${newsEntity.address}"></span>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-4">
-                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="index.html">Trang chủ</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="property-grid.html">Chi tiết bất động sản</a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section><!-- End Intro Single-->
-
-    <!-- ======= Property Single ======= -->
-    <section class="property-single nav-arrow-b">
+    <header th:replace="~{/fragments/header::header}"></header>
+       <section style="margin-top: 5rem" class="property-single nav-arrow-b">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
+                    <div >
+                        <h4 class="mt-4" th:text="${newsEntity.title}"></h4>
+                    </div>
                     <div id="property-single-carousel" class="swiper">
                         <div class="swiper-wrapper">
                             <th:block th:each="image : ${images}">
@@ -174,7 +150,7 @@
                         </div>
                         <div class="col-md-12 col-lg-4">
                             <div class="property-contact">
-                                <form class="form-a">
+                                <form class="form-a" action="mail" method="post">
                                     <div class="row">
                                         <div class="col-md-12 mb-1">
                                             <div class="form-group">
@@ -206,7 +182,8 @@
             </div>
         </div>
     </section><!-- End Property Single-->
-
+    <div th:replace="~{/fragments/footerBefore::section}"></div>
+    <footer th:replace="~{/fragments/footer::footer}"></footer>
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->

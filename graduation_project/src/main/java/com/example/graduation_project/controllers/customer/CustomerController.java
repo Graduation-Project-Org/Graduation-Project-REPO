@@ -1,5 +1,6 @@
 package com.example.graduation_project.controllers.customer;
 
+import com.example.graduation_project.dto.CustomerDto;
 import com.example.graduation_project.entities.customer.CustomerEntity;
 import com.example.graduation_project.serviceimpl.customer.CustomerServiceImpl;
 import com.example.graduation_project.services.customer.CustomerService;
@@ -55,24 +56,27 @@ public class CustomerController {
             return "error404";
         }
     }
-        @GetMapping("/delete/{id}")
-        public String showDetailDelete (@PathVariable Long id, Model model) {
-            Optional< CustomerEntity > customerEntity = customerService.findById(id);
-            if (customerEntity.isPresent()) {
-                model.addAttribute("customerEntity", customerEntity.get());
-                return "customer/delete";
-            } else {
-                model.addAttribute("message", "Không tìm thấy thông tin khách hàng");
-                return "error404";
-            }
+
+    @GetMapping("/delete/{id}")
+    public String showDetailDelete(@PathVariable Long id, Model model) {
+        Optional< CustomerEntity > customerEntity = customerService.findById(id);
+        if (customerEntity.isPresent()) {
+            model.addAttribute("customerEntity", customerEntity.get());
+            return "customer/delete";
+        } else {
+            model.addAttribute("message", "Không tìm thấy thông tin khách hàng");
+            return "error404";
+        }
 
     }
+
     @PostMapping("/delete")
     public String delete(@RequestParam Long id,
-                               Model model) {
+                         Model model) {
         customerService.delete(id);
-        return "redirect:/customer/list";
+        return "redirect:customer/list";
     }
+
     @GetMapping("/edit/{id}")
     public String showFormEdit(@PathVariable Long id, Model model) {
         Optional< CustomerEntity > customerEntity = customerService.findById(id);
@@ -84,4 +88,16 @@ public class CustomerController {
             return "error404";
         }
     }
+
+//    @GetMapping("/create")
+//    public String showFormCreate(@ModelAttribute CustomerDto customerDto, Model model) {
+//        model.addAttribute("customerDto", customerDto);
+//        return "customer/create";
+//    }
+//    @GetMapping("/create")
+//    public String createCustomer(@ModelAttribute CustomerDto customerDto, Model model) {
+//        model.addAttribute("customerDto", customerDto);
+//        return "customer/create";
+//    }
 }
+

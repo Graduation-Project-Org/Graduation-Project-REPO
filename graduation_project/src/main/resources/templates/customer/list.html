@@ -128,7 +128,7 @@
                 <li class="page-item">
                     <a class="btn btn-outline-primary btn-sm" role="button" th:if="${customerEntityPage.hasPrevious()}"
                        th:href="@{/customer(page=${customerEntityPage.number -1})}">
-                        Previous
+                        Trang trước
                     </a>
                 </li>
                 <li class="page-item">
@@ -141,7 +141,7 @@
                 <li class="page-item">
                     <a class="btn btn-outline-primary btn-sm" role="button" th:if="${customerEntityPage.hasNext()}"
                        th:href="@{/customer(page=${customerEntityPage.number +1 })}">
-                        Next
+                        Trang sau
                     </a>
                 </li>
             </ul>
