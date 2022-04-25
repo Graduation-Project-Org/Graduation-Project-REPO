@@ -8,8 +8,13 @@ import com.example.graduation_project.services.news.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +23,8 @@ import java.util.Optional;
 public class NewsServiceImpl implements NewsService {
     @Autowired
     private NewsRepository newsRepository;
+    @Autowired
+    private JavaMailSender emailSender;
     @Override
     public Page< NewsEntity > findAllNewsByFilter(String address, String category,
                                                   String direction, String title,
@@ -45,6 +52,23 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public Optional< NewsEntity > findById(Long id) {
         return newsRepository.findById(id);
+    }
+
+    @Override
+    public void sendSimpleMessage(String name, String customerEmail, String email, String comment) throws MessagingException, UnsupportedEncodingException {
+        String mailContent = "";
+        MimeMessage message = emailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
+        helper.setFrom("plthienbkdn@gmail.com", "Bất động sản ABC");
+        helper.setTo(customerEmail);
+        helper.setSubject("Một khách hàng quan tâm tới bài đăng của bạn");
+        mailContent = "<p> Chào bạn!</p>\n" +
+                "<p>Khách hàng " + name + " " + email+ " đã gửi cho bạn 1 thông báo với nội dung: </p>\n" +
+                "<p>" + comment +"</p>\n" +
+                "<p>Thanks and Regards</p>\n" +
+                "<hr>";
+        helper.setText(mailContent, true);
+        emailSender.send(message);
     }
 
     static {

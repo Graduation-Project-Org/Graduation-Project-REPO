@@ -5,6 +5,7 @@ import com.example.graduation_project.services.news.DirectionService;
 import com.example.graduation_project.services.news.ImageService;
 import com.example.graduation_project.services.news.NewsService;
 import com.example.graduation_project.util.MyRange;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,22 +34,27 @@ public class NewsController {
     private ImageService imageService;
     @Autowired
     private DirectionService directionService;
+
     @ModelAttribute("Image")
     public Iterable< ImageOfNewsEntity > imageList(Model model) {
         return imageService.findAll();
     }
+
     @ModelAttribute("directions")
     public Iterable< DirectionEntity > directionList(Model model) {
         return directionService.findAll();
     }
+
     @ModelAttribute("areaRanges")
     public Iterable< AreaRange > areaRanges(Model model) {
         return MyRange.getAreaRange();
     }
+
     @ModelAttribute("priceRanges")
     public Iterable< PriceRange > priceRanges(Model model) {
         return MyRange.getPriceRange();
     }
+
     // show list news
     @GetMapping("")
     public String getListNews(
@@ -112,7 +120,17 @@ public class NewsController {
         model.addAttribute("newsEntity", newsEntity.get());
         model.addAttribute("images", images);
         return "real_estate_new/detail";
+    }
 
+    @GetMapping("detail/email")
+    public void emailSend(@RequestParam("email") String email,
+                            @RequestParam("customerEmail") String customerEmail,
+                            @RequestParam("name") String name,
+                            @RequestParam("comment") String comment,
+                            @RequestParam("id") String id,
+                            Model model
+    ) throws UnsupportedEncodingException, MessagingException {
+        newsService.sendSimpleMessage(name, customerEmail, email, comment);
     }
 
 

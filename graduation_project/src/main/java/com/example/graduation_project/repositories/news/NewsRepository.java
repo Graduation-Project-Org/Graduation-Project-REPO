@@ -16,7 +16,7 @@ public interface NewsRepository extends JpaRepository< NewsEntity, Long > {
             " from `news` \n " +
             " where `address` like concat('%',trim(:address),'%')\n " +
             " and `category_entity_category_id` like concat('%',trim(:category),'%')\n " +
-            " and `direction_entity_direction`_id like concat('%',trim(:direction),'%')\n " +
+            " and `direction_entity_direction_id` like concat('%',trim(:direction),'%')\n " +
             " and `title` like concat('%',trim(:title),'%')\n " +
             " and `area` between :minArea and :maxArea " +
             " and `price` between :minPrice and :maxPrice " +
