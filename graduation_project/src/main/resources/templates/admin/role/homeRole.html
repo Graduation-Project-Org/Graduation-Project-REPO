@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/managementLayout.html}">
+<head>
+    <meta charset="utf-8">
+    <title>Quản lý tài khoản</title>
+
+</head>
+<body>
+<!--Header-->
+<section class="col-md-10 bg-light " layout:fragment="content">
+
+
+
+        <div class=" offset-9 col-3 mt-3 " style="display: flex;justify-content: end;">
+
+            <button class="btn btn-success m-3" title="Thêm mới câu hỏi">
+                <a th:href=" @{/admin/role/add}" style="color:white;text-decoration: none; white-space: nowrap;">
+                    <span> <i class="fa fa-plus-circle"> Thêm</i> </span>
+                </a>
+            </button>
+        </div>
+
+        <div class="m-3">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h1> Quản lý vai trò</h1>
+                </div>
+                <div class="card-body">
+                    <!--                <div th:if="${message!=null}" class="alert alert-info"-->
+                    <!--                     role="alert">-->
+                    <!--                    <strong>[[${message}]]</strong>-->
+                    <!--                </div>-->
+                    <!--                <div th:if="${error!=null}" class="alert alert-danger"-->
+                    <!--                     role="alert">-->
+                    <!--                    <strong>[[${error}]]</strong>-->
+                    <!--                </div>-->
+                    <table class="table table-striped table-inverse ml-3 mr-3">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th style="text-align:left;">Mã vai trò</th>
+                            <th style="text-align:left;">Tên vai trò</th>
+                            <th style="text-align:left;">Đường dẫn</th>
+                            <th>Hành động</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+                        <tr th:each=" item: ${listRole}">
+                            <td th:text="${item.code}" style="text-align:left;"></td>
+                            <td th:text="${item.name}" style="text-align:left;"></td>
+                            <td th:text="${item.url}" style="text-align:left;"></td>
+
+                            <!-- action -->
+                            <td>
+
+                                <a th:href="@{'/admin/role/edit-id='+${item.roleId}}" class="btn btn-outline-success"
+                                   title="Chỉnh sửa bài nghe"> <i class="fas fa-edit"></i> </a>
+
+                                <a
+                                        class="btn btn-outline-danger"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        th:data-id="${item.roleId}"
+                                        onclick="showConfirmModalDelete(this.getAttribute('data-id'))"
+                                        title="Xóa bài nghe"
+                                ><i class="fas fa-trash"> </i> </a>
+                            </td>
+
+
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+            <script>
+                function showConfirmModalDelete(roleId) {
+                    $('#yesOption').attr('href', '/graduation/admin/role/delete-id=' + roleId);
+                    $('#confirmationId').modal('show');
+                }
+            </script>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Xoá Nhân
+                                Viên</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn muốn xóa: Lê Quốc Tùng
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-secondary"
+                                    data-bs-dismiss="modal">Đóng
+                            </button>
+                            <button type="button" class="btn btn-sm text-light bg-danger">
+                                Xoá
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+</section>
+</body>
+</html>

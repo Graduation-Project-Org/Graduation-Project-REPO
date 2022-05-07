@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/fragments/managementLayout.html}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Quản lý tài khoản</title>
+
+</head>
+<body>
+<!--Header-->
+<section class="col-md-10 bg-light" layout:fragment="content">
+    <div class="offset-3 col-6 mt-4">
+    <form  th:action="@{/admin/role/saveOrEdit}" method="post" th:object="${roledto}">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2 th:unless="${roledto.isEdit}">Thêm mới vai trò </h2>
+
+                <h2 th:if="${roledto.isEdit}">Sửa vai trò</h2>
+            </div>
+            <div class="form-group">
+                <label for="codeId">Nhập mã vai trò (<span style="color:red;">*</span>):</label><br>
+                <input type="text" class="form-control" id="codeId" th:field="*{code}"
+                       placeholder="Nhập tên vai trò" autofocus="autofocus" >
+                <span th:if="${error!=null}"  style="color:red;"> Mã vai trò đã tồn tại trên hệ thống.</span>
+            </div>
+            <div class="form-group" >
+                <label for="roleId">Nhập tên vai trò (<span style="color:red;">*</span>):</label><br>
+                <input type="hidden" th:field="*{isEdit}">
+                <input type="hidden" th:field="*{roleId}">
+                <input type="text" class="form-control" id="roleId" th:field="*{name}"
+                       placeholder="Nhập tên vai trò" autofocus="autofocus" >
+                <span th:if="${#fields.hasErrors('name')}" style="color:red;"> Trường tên vai trò không được để trống.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="urlId">Url:</label>
+                <input type="text" class="form-control" id="urlId" th:field="*{url}"
+                       placeholder="Nhập tên vai trò" autofocus="autofocus">
+            </div>
+
+            <div class="card-footer text-muted">
+                <button class="btn btn-primary"><i class="fas fa-save"></i>
+                    <span>Lưu</span>
+                </button>
+                <button class="btn btn-success" type="reset">Đặt lại</button>
+            </div>
+        </div>
+
+    </form>
+    </div>
+</section>
+</body>
+</html>
