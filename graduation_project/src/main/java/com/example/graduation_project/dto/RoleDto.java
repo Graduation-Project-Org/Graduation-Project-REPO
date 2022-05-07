@@ -8,5 +8,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleDto {
+
+
+    private Long roleId;
+
     private String name;
+
+    private String url;
+
+    private String code;
+
+    private Boolean isEdit=false;
 }

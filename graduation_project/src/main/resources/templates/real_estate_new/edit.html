@@ -1,10 +1,186 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Chỉnh sửa tin đăng</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link th:href="@{/assets/img/favicon.png}" rel="icon">
+    <link th:href="@{/assets/img/apple-touch-icon.png}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link th:href="@{/assets/vendor/animate.css/animate.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Template Main CSS File -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" type="text/css">
+
+
+    <!-- =======================================================
+    * Template Name: EstateAgency - v4.7.0
+    * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
+
 <body>
+
+<!-- ======= Property Search Section ======= -->
+<div class="click-closed"></div>
+<!--/ Form Search Star /-->
+<main id="main">
+    <header th:replace="~{/fragments/header::header}"></header>
+    <section style="margin-top: 5rem" class="property-single nav-arrow-b">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 bg-light">
+                    <form class="form-group row g-3 needs-validation m-3"
+                          th:action="@{/news/edit}" th:object="${newsDto}" method="post"
+                          enctype="multipart/form-data">
+                        <div>
+                            <h5 class="text-center">Chỉnh sửa tin đăng</h5>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label class="form-label">Tiêu đề
+                                <span style="color: red">(*)</span>
+                            </label>
+                            <input type="text" class="form-control" id="title" name="title"
+                                   th:value="${newsDto.getTitle()}">
+                            <!--                            <small-->
+                            <!--                                    *ngIf="form.controls.title.errors?.required && (form.controls.title.touched || form.controls.title.dirty) "-->
+                            <!--                                    class="fst-italic" style="color: red">Tiêu đề không được để trống</small>-->
+                            <!--                            <small-->
+                            <!--                                    *ngIf="form.controls.title.errors?.maxlength && (form.controls.title.touched || form.controls.title.dirty) "-->
+                            <!--                                    class="fst-italic" style="color: red">Tối đa 256 kí tự</small>-->
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label class="form-label">Địa chỉ
+                                <span style="color: red">(*)</span>
+                            </label>
+                            <input type="text" class="form-control" id="address" name="address"
+                                   th:value="${newsDto.getAddress()}">
+                            <!--                            <small-->
+                            <!--                                    *ngIf="form.controls.title.errors?.required && (form.controls.title.touched || form.controls.title.dirty) "-->
+                            <!--                                    class="fst-italic" style="color: red">Tiêu đề không được để trống</small>-->
+                            <!--                            <small-->
+                            <!--                                    *ngIf="form.controls.title.errors?.maxlength && (form.controls.title.touched || form.controls.title.dirty) "-->
+                            <!--                                    class="fst-italic" style="color: red">Tối đa 256 kí tự</small>-->
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="categoryId" class="form-label">Loại bất động sản<span
+                                    style="color: red">(*)</span></label>
+                            <select id="categoryId" class="form-select" aria-label="Default select example"
+                                    name="categoryId" placeholder="">
+                                </option>
+                                <th:block th:each="category : ${categoryEntityList}">
+                                    <option th:selected="${category.getCategoryId()} == ${newsDto.categoryId}"
+                                            th:value="${category.getCategoryId()}"
+                                            th:text="${category.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="directionId" class="form-label">Chọn hướng <span
+                                    style="color: red">(*)</span></label>
+                            <select id="directionId" class="form-select" aria-label="Default select example"
+                                    name="directionId" placeholder="">
+                                <th:block th:each="direction : ${directionEntityList}">
+                                    <option th:selected="${direction.getDirectionId()} == ${newsDto.directionId}"
+                                            th:value="${direction.getDirectionId()}"
+                                            th:text="${direction.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="area" class="form-label">Diện tích (m2)
+                                <span style="color: red">(*)</span>
+                            </label>
+                            <input type="number" class="form-control" id="area" placeholder="100 m2" name="area"
+                                   th:value="${newsDto.getArea()}">
+                            <!--                            <small-->
+                            <!--                                    *ngIf="form.controls.area.errors?.required && (form.controls.area.touched || form.controls.area.dirty) "-->
+                            <!--                                    class="fst-italic" style="color: red">Diện tích không được để trống</small>-->
+                            <!--                            <small *ngIf="form.controls.area.errors?.min && (form.controls.area.touched || form.controls.area.dirty) "-->
+                            <!--                                   class="fst-italic" style="color: red">Nhập giá trị lớn hơn 0</small>-->
+                        </div>
+                        <div class="col-md-6 position-relative">
+                            <label for="price" class="form-label">Giá (vnd)
+                                <span style="color: red">(*)</span>
+                            </label>
+                            <!--                            <span *ngIf="priceShow"> : {{priceShow|number}} vnd</span>-->
+                            <input type="number" class="form-control" id="price"
+                                   placeholder="1.000.000.000 vnd" name="price" th:value="${newsDto.getPrice()}">
+
+                            <!--                            <small-->
+                            <!--                                    *ngIf="form.controls.price.errors?.required && (form.controls.price.touched || form.controls.price.dirty) "-->
+                            <!--                                    class="fst-italic" style="color: red">Giá không được để trống</small>-->
+                            <!--                            <small-->
+                            <!--                                    *ngIf="form.controls.price.errors?.min && (form.controls.price.touched || form.controls.price.dirty) "-->
+                            <!--                                    class="fst-italic" style="color: red">Nhập giá trị lớn hơn 0</small>-->
+                        </div>
+                        <div class="col-md-12 position-relative">
+                            <label for="note" class="form-label">Thông tin mô tả</label>
+                            <textarea type="textarea" class="form-control" id="note"
+                                      name="description" th:value="${newsDto.getDescription()}"
+                                      th:text="${newsDto.getDescription()}"></textarea>
+                        </div>
+                        <div class="col-md-12 position-relative field">
+                            <label for="images" class="form-label">Thêm ảnh (tối thiểu 1 ảnh)</label>
+                            <input type="file" multiple="multiple" class="form-control" id="images" name="images">
+                            <!--                            <small *ngIf="imgMess"-->
+                            <!--                                   class="fst-italic" style="color: red">{{imgMess}}</small>-->
+                        </div>
+                        <div class="d-flex">
+                            <th:block th:each="img : ${newsDto.getImageList()}">
+                                <img class="me-md-2" th:src="@{'/' + ${img.name}}" alt="" width="120px">
+                            </th:block>
+
+                        </div>
+                        <div class="btn-toolbar mb-3 d-flex flex-row-reverse bd-highlight" role="toolbar"
+                             aria-label="Toolbar with button groups">
+                            <div class="btn-group me-2 float-right">
+                                <button class="btn btn-success customBtn" type="submit" data-bs-toggle="modal"
+                                        data-bs-target="#Modal">Đăng tin
+                                </button>
+                            </div>
+                            <div class="btn-group me-2 float-right">
+                                <button class="btn btn-secondary customBtn" type="submit" (click)="clearAll()">Hủy
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div th:replace="~{/fragments/footerBefore::section}"></div>
+    <footer th:replace="~{/fragments/footer::footer}"></footer>
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/assets/vendor/swiper/swiper-bundle.min.js}"></script>
+<script th:src="@{/assets/vendor/php-email-form/validate.js}"></script>
+
+<!-- Template Main JS File -->
+<script th:src="@{/assets/js/main.js}"></script>
 
 </body>
 </html>

@@ -20,4 +20,6 @@ public class AccountDto {
     private boolean enabled;
     private String verifyCode;
 
+    private Boolean isEdit=false;
+
 }

@@ -17,6 +17,11 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
+    public void save(ImageOfNewsEntity imageOfNewsEntity) {
+        imageOfNewsRepository.save(imageOfNewsEntity);
+    }
+
+    @Override
     public List< ImageOfNewsEntity > findAllByNewsEntity_NewsId(Long id) {
         return imageOfNewsRepository.findAllByNewsEntity_NewsId(id);
     }

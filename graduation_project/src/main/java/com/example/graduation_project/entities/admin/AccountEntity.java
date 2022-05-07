@@ -42,5 +42,7 @@ public class AccountEntity implements Serializable {
     )
     private Set< RoleEntity > roles;
 
+    @OneToOne(mappedBy = "account")
+    private  CustomerEntity customer;
 
 }

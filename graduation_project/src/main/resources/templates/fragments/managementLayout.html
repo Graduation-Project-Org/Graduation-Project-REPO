@@ -25,6 +25,7 @@
     <!-- Template Main CSS File -->
     <link th:href="@{/assets/css/style.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/assets/css/headadmin.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
     <!-- =======================================================
     * Template Name: EstateAgency - v4.7.0
@@ -36,13 +37,13 @@
 <body>
 <!--Header-->
 <main>
-    <header th:replace="~{/fragments/header::header}"></header>
+    <header th:replace="~{/fragments/headerAdmin::header}"></header>
     <!-- ======= Intro Section ======= -->
 
-    <section style="margin-top: 4.5rem">
-        <div class="row">
+    <section style="margin-top: 4.5rem;">
+        <div class="row" style="--bs-gutter-x: 0;">
             <aside class="col-md-2 bg-light "
-                   th:replace="~{/fragments/sidebar::aside}"></aside>
+                   th:replace="~{/fragments/sidebarAdmin::aside}"></aside>
 
             <div class="col-md-10 bg-light" layout:fragment="content"></div>
         </div>
