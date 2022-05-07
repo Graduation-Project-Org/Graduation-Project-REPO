@@ -29,9 +29,9 @@ public class NewsEntity implements Serializable {
 
     private String description;
 
-    private Double price;
+    private Long price;
 
-    private double area;
+    private Long area;
 
     @Column(name = "date_of_news")
     private Date dateOfNews;

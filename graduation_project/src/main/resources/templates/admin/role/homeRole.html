@@ -4,7 +4,7 @@
       layout:decorate="~{/fragments/managementLayout.html}">
 <head>
     <meta charset="utf-8">
-    <title>Qu·∫£n l√Ω t√†i kho·∫£n</title>
+    <title>Qu?n l˝ t‡i kho?n</title>
 
 </head>
 <body>
@@ -15,9 +15,9 @@
 
         <div class=" offset-9 col-3 mt-3 " style="display: flex;justify-content: end;">
 
-            <button class="btn btn-success m-3" title="Th√™m m·ªõi c√¢u h·ªèi">
+            <button class="btn btn-success m-3" title="ThÍm m?i c‚u h?i">
                 <a th:href=" @{/admin/role/add}" style="color:white;text-decoration: none; white-space: nowrap;">
-                    <span> <i class="fa fa-plus-circle"> Th√™m</i> </span>
+                    <span> <i class="fa fa-plus-circle"> ThÍm</i> </span>
                 </a>
             </button>
         </div>
@@ -25,7 +25,7 @@
         <div class="m-3">
             <div class="card">
                 <div class="card-header text-center">
-                    <h1> Qu·∫£n l√Ω vai tr√≤</h1>
+                    <h1> Qu?n l˝ vai trÚ</h1>
                 </div>
                 <div class="card-body">
                     <!--                <div th:if="${message!=null}" class="alert alert-info"-->
@@ -39,10 +39,10 @@
                     <table class="table table-striped table-inverse ml-3 mr-3">
                         <thead class="thead-inverse">
                         <tr>
-                            <th style="text-align:left;">M√£ vai tr√≤</th>
-                            <th style="text-align:left;">T√™n vai tr√≤</th>
-                            <th style="text-align:left;">ƒê∆∞·ªùng d·∫´n</th>
-                            <th>H√†nh ƒë·ªông</th>
+                            <th style="text-align:left;">M„ vai trÚ</th>
+                            <th style="text-align:left;">TÍn vai trÚ</th>
+                            <th style="text-align:left;">–u?ng d?n</th>
+                            <th>H‡nh d?ng</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,14 +57,14 @@
                             <td>
 
                                 <a th:href="@{'/admin/role/edit-id='+${item.roleId}}" class="btn btn-outline-success"
-                                   title="Ch·ªânh s·ª≠a b√†i nghe"> <i class="fas fa-edit"></i> </a>
+                                   title="Ch?nh s?a b‡i nghe"> <i class="fas fa-edit"></i> </a>
 
                                 <a
                                         class="btn btn-outline-danger"
                                         data-bs-toggle="modal" data-bs-target="#exampleModal"
                                         th:data-id="${item.roleId}"
                                         onclick="showConfirmModalDelete(this.getAttribute('data-id'))"
-                                        title="X√≥a b√†i nghe"
+                                        title="XÛa b‡i nghe"
                                 ><i class="fas fa-trash"> </i> </a>
                             </td>
 
@@ -90,20 +90,20 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Xo√° Nh√¢n
-                                Vi√™n</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Xo· Nh‚n
+                                ViÍn</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            B·∫°n mu·ªën x√≥a: L√™ Qu·ªëc T√πng
+                            B?n mu?n xÛa: LÍ Qu?c T˘ng
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-sm btn-secondary"
-                                    data-bs-dismiss="modal">ƒê√≥ng
+                                    data-bs-dismiss="modal">–Ûng
                             </button>
                             <button type="button" class="btn btn-sm text-light bg-danger">
-                                Xo√°
+                                Xo·
                             </button>
                         </div>
                     </div>

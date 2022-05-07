@@ -87,6 +87,7 @@
                             <button type="button" class="btn btn-sm btn-danger small-text"
                                     data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
+
                                 Xóa
                             </button>
 
@@ -108,16 +109,14 @@
                                             <button type="button" class="btn btn-sm btn-secondary"
                                                     data-bs-dismiss="modal">Đóng
                                             </button>
-                                            <button type="button" class="btn btn-sm text-light bg-danger">
+                                            <a class="btn btn-sm btn-outline-primary" th:href="@{/customer/delete/__${customer.customerId}__ }"
+                                               role="button">
                                                 Xoá
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </td>
                     </tr>
                     <tr>

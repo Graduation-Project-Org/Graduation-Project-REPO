@@ -30,7 +30,6 @@ public class CustomerEntity implements Serializable {
 
     @Column(name ="last_name",length = 30)
     private  String lastName;
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 

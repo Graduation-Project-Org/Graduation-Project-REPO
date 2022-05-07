@@ -1,5 +1,6 @@
 package com.example.graduation_project.services.news;
 
+import com.example.graduation_project.dto.NewsDto;
 import com.example.graduation_project.entities.news.NewsEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,6 +36,11 @@ public interface NewsService {
     Optional< NewsEntity > findById(Long id);
 
     void sendSimpleMessage(String name,String customerEmail, String email, String comment) throws MessagingException, UnsupportedEncodingException;
+//    Optional< NewsEntity > findLastNews();
+     NewsEntity save(NewsEntity newsEntity);
+    NewsEntity saveFromDTO (NewsDto dto, Long customerEntityId);
+    NewsDto convertNewsEntityToDto (NewsEntity newsEntity);
+
 
 
 }
