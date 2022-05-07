@@ -30,6 +30,7 @@ public class CustomerEntity implements Serializable {
 
     @Column(name ="last_name",length = 30)
     private  String lastName;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
 
@@ -44,8 +45,9 @@ public class CustomerEntity implements Serializable {
 
     private  String image;
 
-    @OneToOne(targetEntity = AccountEntity.class, cascade = CascadeType.ALL)
-    private AccountEntity accounts;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private AccountEntity account;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "customerEntity")
     private List< NewsEntity > newsEntityList;
