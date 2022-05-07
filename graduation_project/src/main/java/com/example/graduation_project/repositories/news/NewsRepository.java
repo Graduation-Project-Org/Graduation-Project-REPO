@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface NewsRepository extends JpaRepository< NewsEntity, Long > {
     // show list
@@ -73,5 +75,6 @@ public interface NewsRepository extends JpaRepository< NewsEntity, Long > {
                                               @Param("status") String status,
                                               Pageable pageable);
 
-
+//    @Query(value = " select * from `news` ORDER BY id DESC LIMIT 1 ", nativeQuery = true)
+//    Optional< NewsEntity > findLastNews ();
 }

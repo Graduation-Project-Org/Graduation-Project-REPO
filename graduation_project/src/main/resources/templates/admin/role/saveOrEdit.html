@@ -4,7 +4,7 @@
       layout:decorate="~{/fragments/managementLayout.html}" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
-    <title>Quản lý tài khoản</title>
+    <title>Qu?n l� t�i kho?n</title>
 
 </head>
 <body>
@@ -14,36 +14,36 @@
     <form  th:action="@{/admin/role/saveOrEdit}" method="post" th:object="${roledto}">
         <div class="card">
             <div class="card-header text-center">
-                <h2 th:unless="${roledto.isEdit}">Thêm mới vai trò </h2>
+                <h2 th:unless="${roledto.isEdit}">Th�m m?i vai tr� </h2>
 
-                <h2 th:if="${roledto.isEdit}">Sửa vai trò</h2>
+                <h2 th:if="${roledto.isEdit}">S?a vai tr�</h2>
             </div>
             <div class="form-group">
-                <label for="codeId">Nhập mã vai trò (<span style="color:red;">*</span>):</label><br>
+                <label for="codeId">Nh?p m� vai tr� (<span style="color:red;">*</span>):</label><br>
                 <input type="text" class="form-control" id="codeId" th:field="*{code}"
-                       placeholder="Nhập tên vai trò" autofocus="autofocus" >
-                <span th:if="${error!=null}"  style="color:red;"> Mã vai trò đã tồn tại trên hệ thống.</span>
+                       placeholder="Nh?p t�n vai tr�" autofocus="autofocus" >
+                <span th:if="${error!=null}"  style="color:red;"> M� vai tr� d� t?n t?i tr�n h? th?ng.</span>
             </div>
             <div class="form-group" >
-                <label for="roleId">Nhập tên vai trò (<span style="color:red;">*</span>):</label><br>
+                <label for="roleId">Nh?p t�n vai tr� (<span style="color:red;">*</span>):</label><br>
                 <input type="hidden" th:field="*{isEdit}">
                 <input type="hidden" th:field="*{roleId}">
                 <input type="text" class="form-control" id="roleId" th:field="*{name}"
-                       placeholder="Nhập tên vai trò" autofocus="autofocus" >
-                <span th:if="${#fields.hasErrors('name')}" style="color:red;"> Trường tên vai trò không được để trống.</span>
+                       placeholder="Nh?p t�n vai tr�" autofocus="autofocus" >
+                <span th:if="${#fields.hasErrors('name')}" style="color:red;"> Tru?ng t�n vai tr� kh�ng du?c d? tr?ng.</span>
             </div>
 
             <div class="form-group">
                 <label for="urlId">Url:</label>
                 <input type="text" class="form-control" id="urlId" th:field="*{url}"
-                       placeholder="Nhập tên vai trò" autofocus="autofocus">
+                       placeholder="Nh?p t�n vai tr�" autofocus="autofocus">
             </div>
 
             <div class="card-footer text-muted">
                 <button class="btn btn-primary"><i class="fas fa-save"></i>
-                    <span>Lưu</span>
+                    <span>Luu</span>
                 </button>
-                <button class="btn btn-success" type="reset">Đặt lại</button>
+                <button class="btn btn-success" type="reset">�?t l?i</button>
             </div>
         </div>
 

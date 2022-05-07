@@ -45,5 +45,4 @@ public class AccountEntity implements Serializable {
     @OneToOne(mappedBy = "account")
     private  CustomerEntity customer;
 
-
 }

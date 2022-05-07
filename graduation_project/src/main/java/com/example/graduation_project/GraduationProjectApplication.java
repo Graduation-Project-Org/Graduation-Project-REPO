@@ -11,9 +11,9 @@ public class GraduationProjectApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GraduationProjectApplication.class, args);
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-	    String encoded = encoder.encode("123456");
-	    System.out.println("password is:"+encoded);
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//	    String encoded = encoder.encode("123456");
+//	    System.out.println("password is:"+encoded);
 
     }
 

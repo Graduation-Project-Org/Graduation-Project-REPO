@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Status {
 
-    public final static String saveSuccess="Thêm mới thành công !";
+    public final static String saveSuccess="Thêm mới thành công";
 
     public final static  String saveFail="Thêm mới thất bại !";
 
@@ -15,9 +15,9 @@ public class Status {
 
     public final static String deleteSuccess="Xóa thành công !";
 
-    public final static String deleteFail="không tồn tại trên hệ thống !";
+    public final static String deleteFail="Không tồn tại trong hệ thống !";
 
-    public final static String existCode="Mã code đã tồn tại trên hệ thống !";
+    public final static String existCode="Mã code đã tồn tại trong hệ thống !";
 
 
 }
